@@ -1,0 +1,50 @@
+﻿@page
+@model MyEshop.Pages.Admin.AddModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>افزودن کالا</h1>
+<hr />
+<form method="post" enctype="multipart/form-data">
+    <dl class="dl-horizontal">
+        <dt><label asp-for="Product.Name"></label></dt>
+        <dd>
+            <input asp-for="Product.Name" class="form-control" />
+            <span asp-validation-for="Product.Name"></span>
+        </dd>
+        <dt><label asp-for="Product.Description"></label></dt>
+        <dd>
+            <textarea asp-for="Product.Description" class="form-control"></textarea>
+            <span asp-validation-for="Product.Description"></span>
+        </dd>
+        <dt><label asp-for="Product.Price"></label></dt>
+        <dd>
+            <input asp-for="Product.Price" class="form-control" />
+            <span asp-validation-for="Product.Price"></span>
+        </dd>
+        <dt><label asp-for="Product.QuantityInStock"></label></dt>
+        <dd>
+            <input asp-for="Product.QuantityInStock" class="form-control" />
+            <span asp-validation-for="Product.QuantityInStock"></span>
+        </dd>
+        <dt><label asp-for="Product.Picture"></label></dt>
+        <dd>
+            <input asp-for="Product.Picture" />
+            <span asp-validation-for="Product.Picture"></span>
+        </dd>
+        <dt>گروه</dt>
+        <dd>
+            @foreach(var item in Model.Product.Categories)
+            {
+                <p>
+                    <input type="checkbox" name="selectedGroups" value="@item.Id"/> @item.Name
+                </p>
+            }
+        </dd>
+        <dt></dt>
+        <dd>
+            <input type="submit" class="btn btn-success" value="ثبت" />
+        </dd>
+    </dl>
+</form>
